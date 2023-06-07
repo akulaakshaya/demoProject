@@ -16,7 +16,7 @@ import eStoreProduct.ProductsService.ProductService;
 import eStoreProduct.model.Product;
 
 @Controller
-@ComponentScan(basePackages = "Products")
+@ComponentScan(basePackages = "eStoreProduct")
 public class ProductController {
 
 	private final ProductService productService;
@@ -27,11 +27,6 @@ public class ProductController {
 		this.productService = productService;
 		CategoryDAO categoryDAO = new CategoryDAO(); // Instantiate the CategoryDAO class
 		this.categoryService = new CategoryService(categoryDAO); // Pass CategoryDAO to CategoryService constructor
-	}
-
-	@GetMapping("/categories")
-	public String showCategories(Model model) {
-		return "prod";
 	}
 
 	@GetMapping("/CategoriesServlet")
@@ -52,7 +47,9 @@ public class ProductController {
 	@ResponseBody
 	public String showProducts(@RequestParam(value = "category", required = false) String category, Model model) {
 		List<Product> products;
+		System.out.println("hiii");
 		if (category != null && !category.isEmpty()) {
+			System.out.println("hiii");
 			products = productService.getProductsByCategory(category);
 		} else {
 			products = productService.getAllProducts();

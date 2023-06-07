@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import eStoreProduct.DAO.cartDAO;
 import eStoreProduct.DAO.customerDAO;
 import eStoreProduct.model.custCredModel;
 import eStoreProduct.model.emailSend;
@@ -23,10 +24,12 @@ public class homeController {
 	private String generateotp = "";
 	private String finalemail;
 	customerDAO cdao;
+	cartDAO cartdao1;
 
 	@Autowired
-	public homeController(customerDAO customerdao) {
+	public homeController(customerDAO customerdao, cartDAO cartdao) {
 		cdao = customerdao;
+		cartdao1 = cartdao;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -77,7 +80,8 @@ public class homeController {
 			session.setAttribute("customer", cust); // Store customer object in the session
 			flag = true;
 		}
-
+		custCredModel cust1 = (custCredModel) session.getAttribute("customer");
+		model.addAttribute("cust1", cust1);
 		model.addAttribute("fl", flag);
 		return "home";
 	}
@@ -85,8 +89,7 @@ public class homeController {
 	@RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)
 	public String forgotPswd(Model model) {
 		System.out.println("mail forget Page");
-		// emailSend es = new emailSend();
-		// es.sendEmail("akshayavarma39@gmail.com");
+
 		// // call the view
 		return "forgotPage";
 	}
