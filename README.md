@@ -41,10 +41,12 @@ DROP TABLE SLAM_PRODUCTS;
 CREATE TABLE slam_Products (
     Prod_id SERIAL PRIMARY KEY,
     prod_title VARCHAR(50),
-    prod_prct_id INT,
+    prod_prct_id INT references slam_ProductCategories(prct_id),
     prod_gstc_id  int REFERENCES slam_HSN_Code (HSN_CODE),
     prod_brand VARCHAR(50),
-	image_url varchar(200)
+	image_url varchar(200),
+	prod_desc TEXT,
+	reorderLevel int
 );
 
 drop table slam_Productstock;
@@ -87,7 +89,8 @@ CREATE TABLE slam_OrderProducts (
     prod_id INT REFERENCES slam_Products (Prod_id),
     orpr_batchno int,
     orpr_qty INT,
-    orpr_price NUMERIC(5, 2)
+    orpr_price NUMERIC(5, 2),
+    orpr_gst  numeric(5,2)
 );
 
 
