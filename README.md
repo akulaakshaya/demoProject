@@ -32,6 +32,7 @@ CREATE TABLE slam_ProductCategories (
     prct_desc TEXT
 );
 
+
 DROP TABLE SLAM_HSN_CODE;
 CREATE Table slam_HSN_Code(
 HSN_CODE INT PRIMARY KEY,
