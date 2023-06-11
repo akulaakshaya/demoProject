@@ -1,5 +1,5 @@
 # demoProject
-
+drop table slam_ordersProducts;
 create table slam_cart (
 c_id integer references slam_customers(cust_id),
     p_id integer references productsData(id)
@@ -38,6 +38,9 @@ CREATE Table slam_HSN_Code(
 HSN_CODE INT PRIMARY KEY,
 GST NUMERIC(5,2)
 );
+
+
+
 DROP TABLE SLAM_PRODUCTS;
 CREATE TABLE slam_Products (
     Prod_id SERIAL PRIMARY KEY,
@@ -53,7 +56,6 @@ CREATE TABLE slam_Products (
 drop table slam_Productstock;
 CREATE TABLE slam_ProductStock (
     prod_id INT REFERENCES slam_Products (Prod_id),
-    prod_batchno int,
     prod_price NUMERIC(5, 2),
     prod_stock INT
 );
@@ -102,5 +104,6 @@ c_id integer references slam_customers(Cust_id),
 )
 
 create table slam_cart(
+	c_id integer references slam_customers(Cust_id),
  p_id integer references slam_products(Prod_id)
 )
