@@ -24,7 +24,7 @@ CREATE TABLE Slam_Customers (
     cust_password VARCHAR(1000)
 );
 
-
+select * from slam_customers;
 
 CREATE TABLE slam_ProductCategories (
     prct_id SERIAL PRIMARY KEY,
@@ -85,6 +85,9 @@ CREATE TABLE slam_Orders (
     ordr_processedby INT REFERENCES slam_AdminUsers (ausr_id)
 );
 
+insert into slam_orders(ordr_cust_id,ordr_odate,ordr_total,ordr_gst,ordr_payreference,ordr_paymode,
+					ordr_paystatus,  ordr_saddress, ordr_sPincode,ordr_shipment_status,ordr_shipment_date)
+					values(1,current_date,120,18.7,123,'Onln','D','CarShed',530041,'N','15/06/2023');
 OrderProducts gst using joins we can retrieve
 
 CREATE TABLE slam_OrderProducts (
