@@ -110,3 +110,14 @@ create table slam_cart(
 	c_id integer references slam_customers(Cust_id),
  p_id integer references slam_products(Prod_id)
 )
+
+
+
+
+
+
+
+
+insert into slam_AdminUsers(ausr_title,ausr_desg,ausr_email,ausr_pwd) 
+values('Akshaya','CEO','varmaakula506@gmail.com',
+  '9fe0f07b81e830ecaa9af5fb7963814809c98d393dd67c4599b0d2526e746a6f')    
